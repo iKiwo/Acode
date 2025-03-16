@@ -1,0 +1,34 @@
+name: Android Build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+
+    - name: Yarn Setup
+      run: yarn setup
+      
+    - name: Build Android App
+      run: yarn build
+
+    - name: Upload APK as artifact
+      uses: actions/upload-artifact@v4.6.1
+      with:
+        name: acode-release
+        path: /home/runner/work/Acode/Acode/platforms/android/app/build/outputs/apk/release/app-release.apk
+
+        
