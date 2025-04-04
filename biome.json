@@ -1,13 +1,13 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
+	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"organizeImports": { "enabled": true },
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": false,
 			"complexity": {
+				"noForEach": "warn",
 				"noStaticOnlyClass": "error",
 				"noUselessSwitchCase": "error",
 				"useFlatMap": "error"
@@ -25,6 +25,7 @@
 			}
 		}
 	},
+	"javascript": { "globals": ["Global1"] },
 	"files": {
 		"include": ["src/**/*", "utils/**/*.js", "www/**/*.js", "www/res/**/*.css"],
 		"ignore": [
